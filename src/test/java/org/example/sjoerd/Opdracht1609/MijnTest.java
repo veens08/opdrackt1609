@@ -206,4 +206,111 @@ public class MijnTest {
             System.out.println ();
         }
     }
+
+    @Test
+    void maakLiggendeDriehoekMetBasisLinksOpConsole() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Voer aantal kolommen van de liggende driehoek via de console: ");
+        int grootteDriehoek = scanner.nextInt();
+        System.out.println("Aantal kolommen van de liggende driehoek is: " + grootteDriehoek);
+        System.out.println(" ");
+
+        int aantalLagen = grootteDriehoek;
+        int printTeller = grootteDriehoek;
+        for (; aantalLagen >= 0 && printTeller <= grootteDriehoek; aantalLagen--, printTeller++) {
+            for (int loopIndex = 1; loopIndex <= printTeller; loopIndex++ ) {
+                System.out.print ("*");
+            }
+            System.out.println ();
+        }
+
+        for (aantalLagen = grootteDriehoek, printTeller = grootteDriehoek; aantalLagen > 0 && printTeller > 0; aantalLagen--, printTeller--) {
+            for (int loopIndex = 1; loopIndex < printTeller; loopIndex++) {
+                System.out.print ("*");
+            }
+            System.out.println ();
+        }
+    }
+
+    @Test
+    void maakLiggendeDriehoekMetBasisRechtsOpConsole() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Voer aantal kolommen van de liggende driehoek via de console: ");
+        int grootteDriehoek = scanner.nextInt();
+        System.out.println("Aantal kolommen van de liggende driehoek is: " + grootteDriehoek);
+        System.out.println(" ");
+
+        int aantalKolommen = grootteDriehoek;
+        int printTeller = grootteDriehoek;
+        for (; aantalKolommen >= 0 && printTeller <= grootteDriehoek; aantalKolommen--, printTeller--) {
+            for (int loopIndex = 1; loopIndex <= printTeller; loopIndex++ ) {
+                System.out.print (" ");
+            }
+            for (int loopIndex = aantalKolommen; loopIndex < grootteDriehoek; loopIndex++ ) {
+                System.out.print ("*");
+            }
+            System.out.println ();
+        }
+
+        for (aantalKolommen = grootteDriehoek, printTeller = grootteDriehoek; aantalKolommen > 0 && printTeller > 0; aantalKolommen--, printTeller--) {
+            for (int loopIndex = grootteDriehoek; loopIndex > printTeller; loopIndex-- ) {
+                System.out.print (" ");
+            }
+            for (int loopIndex = 1; loopIndex <= printTeller; loopIndex++) {
+                System.out.print ("*");
+            }
+            System.out.println ();
+        }
+    }
+
+    @Test
+    void maakLiggendeDriehoekMetBasisLinksMetSubstring() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Voer aantal kolommen van de liggende driehoek via de console: ");
+        int grootteDriehoek = scanner.nextInt();
+        System.out.println("Aantal kolommen van de liggende driehoek is: " + grootteDriehoek);
+        System.out.println(" ");
+
+        String sterretjes = "*****************************************";
+        String printSterretjes = "";
+
+        for (int loopIndex = 1; loopIndex <= grootteDriehoek; loopIndex++) {
+            printSterretjes = sterretjes.substring (0,loopIndex);
+            System.out.println (printSterretjes);
+        }
+        for (int loopIndex = grootteDriehoek - 1; loopIndex > 0; loopIndex--) {
+            printSterretjes = sterretjes.substring (0,loopIndex);
+            System.out.println (printSterretjes);
+        }
+    }
+
+    @Test
+    void maakLiggendeDriehoekMetBasisRechtsMetSubstring() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Voer aantal kolommen van de liggende driehoek via de console: ");
+        int grootteDriehoek = scanner.nextInt();
+        System.out.println("Aantal kolommen van de liggende driehoek is: " + grootteDriehoek);
+        System.out.println(" ");
+
+        String sterretjes = "*****************************************";
+        String spaties = "                                         ";
+
+        int offsetSterretjes = 0;
+        int aantalSterretjes = 1;
+        for (int loopIndex = grootteDriehoek; loopIndex > 0; loopIndex--, aantalSterretjes++) {
+            offsetSterretjes = loopIndex + aantalSterretjes;
+            String printSpaties = spaties.substring (0,loopIndex - 1);
+            String printSterretjes = sterretjes.substring (loopIndex,offsetSterretjes);
+
+            System.out.println (printSpaties + printSterretjes);
+        }
+        aantalSterretjes = grootteDriehoek - 1;
+        for (int loopIndex = 1; loopIndex < grootteDriehoek; loopIndex++, aantalSterretjes--) {
+            offsetSterretjes = loopIndex + aantalSterretjes;
+            String printSpaties = spaties.substring (0,loopIndex);
+            String printSterretjes = sterretjes.substring (loopIndex,offsetSterretjes);
+
+            System.out.println (printSpaties + printSterretjes);
+        }
+    }
 }
