@@ -150,7 +150,7 @@ public class MijnTest {
         }
     }
     @Test
-    void maakStaandeDriehoekOpConsoleMethodes() {
+    void maakStaandeDriehoekOpConsole() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Voer de hoogte van de staande driehoek via de console: ");
         int grootteDriehoek = scanner.nextInt();
@@ -173,4 +173,31 @@ public class MijnTest {
 
     }
 
+
+    @Test
+    void maakStaandeDriehoekOpConsoleMetMethodes() {
+
+        int grootteDriehoek = vraagHoogte ();
+        int aantalLagen = grootteDriehoek;
+        int printTeller = 0;
+        for (; aantalLagen >= 0 && printTeller <= grootteDriehoek; aantalLagen--, printTeller++) {
+            for (int loopIndex = 0; loopIndex < aantalLagen; loopIndex++) {
+                System.out.print (" ");
+            }
+            for (int loopIndex = 0; loopIndex < printTeller; loopIndex++) {
+                System.out.print ("*");
+            }
+            for (int loopIndex = 1; loopIndex < printTeller; loopIndex++) {
+                System.out.print ("*");
+            }
+            System.out.println ();
+        }
+    }
+    int vraagHoogte() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Voer de hoogte van de staande driehoek via de console: ");
+        int hoogte = scanner.nextInt();
+        System.out.println("De hoogte van de staande driehoek is: " + hoogte);
+        return hoogte;
+    }
 }
