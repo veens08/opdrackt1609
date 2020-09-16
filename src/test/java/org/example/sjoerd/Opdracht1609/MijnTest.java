@@ -153,17 +153,17 @@ public class MijnTest {
     @Test
     void maakStaandeDriehoekOpConsoleMetMethodes() {
 
-        int grootteDriehoek = vraagHoogte ();
+        int grootteDriehoek = vraagHoogte ("staande");
         int printTeller = 0;
 
         printDriehoek (grootteDriehoek, printTeller);
     }
 
-    int vraagHoogte() {
+    int vraagHoogte(String message) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Voer de hoogte van de staande driehoek via de console: ");
+        System.out.println("Voer de hoogte van de " + message + " driehoek via console: ");
         int hoogte = scanner.nextInt();
-        System.out.println("De hoogte van de staande driehoek is: " + hoogte);
+        System.out.println("De hoogte van de " + message + " driehoek is: " + hoogte);
         return hoogte;
     }
 
@@ -182,4 +182,28 @@ public class MijnTest {
         }
     }
 
+    @Test
+    void maakOmgekeerdeDriehoekOpConsoleMetMethodes() {
+
+        int grootteDriehoek = vraagHoogte ("omgekeerde");
+        int aantalLagen = grootteDriehoek;
+        int printTeller = grootteDriehoek;
+
+        printOmgekeerdeDriehoek (grootteDriehoek, aantalLagen, printTeller);
+    }
+
+    void printOmgekeerdeDriehoek (int grootteDriehoek, int aantalLagen, int printTeller) {
+        for (; aantalLagen >= 0 && printTeller <= grootteDriehoek; aantalLagen--, printTeller--) {
+            for (int loopIndex = grootteDriehoek; loopIndex > aantalLagen; loopIndex--) {
+                System.out.print (" ");
+            }
+            for (int loopIndex = 1; loopIndex < printTeller; loopIndex++) {
+                System.out.print ("*");
+            }
+            for (int loopIndex = 0; loopIndex < printTeller; loopIndex++) {
+                System.out.print ("*");
+            }
+            System.out.println ();
+        }
+    }
 }
