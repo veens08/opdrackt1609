@@ -169,19 +169,34 @@ public class MijnTest {
 
     void printDriehoek(int grootteDriehoek, int printTeller) {
         for (int aantalLagen = grootteDriehoek; aantalLagen >= 0 && printTeller <= grootteDriehoek; aantalLagen--, printTeller++) {
-            for (int loopIndex = 0; loopIndex < aantalLagen; loopIndex++) {
-                System.out.print (" ");
-            }
-            for (int loopIndex = 0; loopIndex < printTeller; loopIndex++) {
-                System.out.print ("*");
-            }
-            for (int loopIndex = 1; loopIndex < printTeller; loopIndex++) {
-                System.out.print ("*");
-            }
+
+            printLinkerSpaties (aantalLagen);
+
+            printLinkerSterretjes (printTeller);
+
+            printRechterSterrejes (printTeller);
+
             System.out.println ();
         }
     }
 
+    void printLinkerSpaties(int aantalLagen) {
+        for (int loopIndex = 0; loopIndex < aantalLagen; loopIndex++) {
+            System.out.print (" ");
+        }
+    }
+
+    void printLinkerSterretjes (int printTeller) {
+        for (int loopIndex = 0; loopIndex < printTeller; loopIndex++) {
+            System.out.print ("*");
+        }
+    }
+
+    void printRechterSterrejes (int printTeller) {
+        for (int loopIndex = 1; loopIndex < printTeller; loopIndex++) {
+            System.out.print ("*");
+        }
+    }
     @Test
     void maakOmgekeerdeDriehoekOpConsoleMetMethodes() {
 
@@ -209,14 +224,10 @@ public class MijnTest {
 
     @Test
     void maakLiggendeDriehoekMetBasisLinksOpConsole() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Voer aantal kolommen van de liggende driehoek via de console: ");
-        int grootteDriehoek = scanner.nextInt();
-        System.out.println("Aantal kolommen van de liggende driehoek is: " + grootteDriehoek);
-        System.out.println(" ");
 
+        int grootteDriehoek = vraagHoogte ("liggend (links)");
         int aantalLagen = grootteDriehoek;
-        int printTeller = grootteDriehoek;
+        int printTeller = 1;
         for (; aantalLagen >= 0 && printTeller <= grootteDriehoek; aantalLagen--, printTeller++) {
             for (int loopIndex = 1; loopIndex <= printTeller; loopIndex++ ) {
                 System.out.print ("*");
@@ -234,12 +245,8 @@ public class MijnTest {
 
     @Test
     void maakLiggendeDriehoekMetBasisRechtsOpConsole() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Voer aantal kolommen van de liggende driehoek via de console: ");
-        int grootteDriehoek = scanner.nextInt();
-        System.out.println("Aantal kolommen van de liggende driehoek is: " + grootteDriehoek);
-        System.out.println(" ");
 
+        int grootteDriehoek = vraagHoogte ("liggend (rechts)");
         int aantalKolommen = grootteDriehoek;
         int printTeller = grootteDriehoek;
         for (; aantalKolommen >= 0 && printTeller <= grootteDriehoek; aantalKolommen--, printTeller--) {
@@ -265,12 +272,8 @@ public class MijnTest {
 
     @Test
     void maakLiggendeDriehoekMetBasisLinksMetSubstring() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Voer aantal kolommen van de liggende driehoek via de console: ");
-        int grootteDriehoek = scanner.nextInt();
-        System.out.println("Aantal kolommen van de liggende driehoek is: " + grootteDriehoek);
-        System.out.println(" ");
 
+        int grootteDriehoek = vraagHoogte ("liggend (links)");
         String sterretjes = "*****************************************";
         String printSterretjes = "";
 
@@ -286,12 +289,8 @@ public class MijnTest {
 
     @Test
     void maakLiggendeDriehoekMetBasisRechtsMetSubstring() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Voer aantal kolommen van de liggende driehoek via de console: ");
-        int grootteDriehoek = scanner.nextInt();
-        System.out.println("Aantal kolommen van de liggende driehoek is: " + grootteDriehoek);
-        System.out.println(" ");
 
+        int grootteDriehoek = vraagHoogte ("liggend (rechts)");
         String sterretjes = "*****************************************";
         String spaties = "                                         ";
 
