@@ -172,9 +172,9 @@ public class MijnTest {
 
             printLinkerSpaties (aantalLagen);
 
-            printLinkerSterretjes (printTeller);
+            printLinkerSterretjes (0, printTeller);
 
-            printRechterSterrejes (printTeller);
+            printRechterSterrejes (1, printTeller);
 
             System.out.println ();
         }
@@ -186,14 +186,14 @@ public class MijnTest {
         }
     }
 
-    void printLinkerSterretjes (int printTeller) {
-        for (int loopIndex = 0; loopIndex < printTeller; loopIndex++) {
+    void printLinkerSterretjes (int loopIndex, int printTeller) {
+        for (; loopIndex < printTeller; loopIndex++) {
             System.out.print ("*");
         }
     }
 
-    void printRechterSterrejes (int printTeller) {
-        for (int loopIndex = 1; loopIndex < printTeller; loopIndex++) {
+    void printRechterSterrejes (int loopIndex, int printTeller) {
+        for (; loopIndex < printTeller; loopIndex++) {
             System.out.print ("*");
         }
     }
@@ -209,16 +209,20 @@ public class MijnTest {
 
     void printOmgekeerdeDriehoek (int grootteDriehoek, int aantalLagen, int printTeller) {
         for (; aantalLagen >= 0 && printTeller <= grootteDriehoek; aantalLagen--, printTeller--) {
-            for (int loopIndex = grootteDriehoek; loopIndex > aantalLagen; loopIndex--) {
-                System.out.print (" ");
-            }
-            for (int loopIndex = 1; loopIndex < printTeller; loopIndex++) {
-                System.out.print ("*");
-            }
-            for (int loopIndex = 0; loopIndex < printTeller; loopIndex++) {
-                System.out.print ("*");
-            }
+
+            printLinkerSpatiesOmgekeerd (grootteDriehoek, aantalLagen);
+
+            printLinkerSterretjes (1, printTeller);
+
+            printRechterSterrejes (0, printTeller);
+
             System.out.println ();
+        }
+    }
+
+    void printLinkerSpatiesOmgekeerd (int grootteDriehoek, int aantalLagen) {
+        for (int loopIndex = grootteDriehoek; loopIndex > aantalLagen; loopIndex--) {
+            System.out.print (" ");
         }
     }
 
@@ -228,6 +232,11 @@ public class MijnTest {
         int grootteDriehoek = vraagHoogte ("liggend (links)");
         int aantalLagen = grootteDriehoek;
         int printTeller = 1;
+
+        printLiggendeDriehoek (grootteDriehoek, aantalLagen, printTeller);
+    }
+
+    void printLiggendeDriehoek (int grootteDriehoek, int aantalLagen, int printTeller) {
         for (; aantalLagen >= 0 && printTeller <= grootteDriehoek; aantalLagen--, printTeller++) {
             for (int loopIndex = 1; loopIndex <= printTeller; loopIndex++ ) {
                 System.out.print ("*");
