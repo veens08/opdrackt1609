@@ -197,6 +197,7 @@ public class MijnTest {
             System.out.print ("*");
         }
     }
+
     @Test
     void maakOmgekeerdeDriehoekOpConsoleMetMethodes() {
 
