@@ -130,42 +130,34 @@ public class MijnTest {
     @Test
     void maakDriehoekOpConsoleMetMethodes() {
 
-        boolean juisteRichting = false;
-        String top = null;
-        //int printTeller = 0;
-
-        vraagDeTopPositie (top);
-
-        System.out.println ("top = " + top);
+        String top = vraagDeTopPositie ();
 
         int grootteDriehoek = vraagHoogte (top);
 
+        printWillekeurigeDriehoek (grootteDriehoek, top);
+    }
+
+    void printWillekeurigeDriehoek (int grootteDriehoek, String top) {
+
         if (top.equals ("boven") ) {
-            System.out.println ("boven");
             printDriehoekMetTopBoven  (grootteDriehoek);
         }
         else if (top.equals ("onder") ) {
-            System.out.println ("onder");
             printDriehoekMetTopOnder  (grootteDriehoek);
-            }
-        if (top.equals ("links") ) {
-            System.out.println ("links");
+        }
+        else if (top.equals ("links") ) {
             printDriehoekMetTopLinks  (grootteDriehoek);
         }
-        else {
-            System.out.println ("rechts");
+        else if (top.equals ("rechts") ) {
             printDriehoekMetTopRechts (grootteDriehoek);
         }
     }
 
-    void vraagDeTopPositie (String top) {
+    String vraagDeTopPositie () {
         boolean juisteRichting = false;
-        top = null;
-
+        String top = "";
         while (juisteRichting == false) {
-            System.out.println ("In while");
             String richtingDriehoek = vraagRichting ();
-            System.out.println (richtingDriehoek);
 
             if (richtingDriehoek.equals("boven") ) {
                 juisteRichting = true;
@@ -184,7 +176,9 @@ public class MijnTest {
                 top = richtingDriehoek;
             }
         }
+        return top;
     }
+
     String vraagRichting() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Geef de positie van de top via console (boven, onder, links of rechts: ");
@@ -197,14 +191,13 @@ public class MijnTest {
         Scanner scanner = new Scanner (System.in);
         System.out.println ("Voer de hoogte van de driehoek met de top " + message + " via console: ");
         int hoogte = scanner.nextInt ();
-        System.out.println ("De hoogte van de " + message + " driehoek is: " + hoogte);
+        System.out.println ("De hoogte van de driehoek met top " + message + " is: " + hoogte);
         return hoogte;
         }
 
     void printDriehoekMetTopBoven(int grootteDriehoek) {
         int printTeller = 0;
-        System.out.println ("Boven printen");
-        System.out.println (grootteDriehoek);
+
         for (int aantalLagen = grootteDriehoek; aantalLagen >= 0 && printTeller <= grootteDriehoek; aantalLagen--, printTeller++) {
 
             printLinkerSpaties (aantalLagen);
@@ -242,8 +235,6 @@ public class MijnTest {
         int aantalLagen = grootteDriehoek;
         int printTeller = grootteDriehoek;
 
-        System.out.println ("Onder printen");
-        System.out.println (grootteDriehoek);
         printOmgekeerdeDriehoek (grootteDriehoek, aantalLagen, printTeller);
     }
 
@@ -272,8 +263,6 @@ public class MijnTest {
         int aantalLagen = grootteDriehoek;
         int printTeller = 1;
 
-        System.out.println ("links printen");
-        System.out.println (grootteDriehoek);
         printLiggendeDriehoek (grootteDriehoek, aantalLagen, printTeller);
     }
 
@@ -299,8 +288,6 @@ public class MijnTest {
         int aantalKolommen = grootteDriehoek;
         int printTeller = grootteDriehoek;
 
-        System.out.println ("Rechts printen");
-        System.out.println (grootteDriehoek);
         for (; aantalKolommen >= 0 && printTeller <= grootteDriehoek; aantalKolommen--, printTeller--) {
             for (int loopIndex = 1; loopIndex <= printTeller; loopIndex++ ) {
                 System.out.print (" ");
