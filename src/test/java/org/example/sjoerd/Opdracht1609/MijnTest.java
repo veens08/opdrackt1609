@@ -128,23 +128,83 @@ public class MijnTest {
     }
 
     @Test
-    void maakStaandeDriehoekOpConsoleMetMethodes() {
+    void maakDriehoekOpConsoleMetMethodes() {
 
-        int grootteDriehoek = vraagHoogte ("staande");
-        int printTeller = 0;
+        boolean juisteRichting = false;
+        String top = null;
+        //int printTeller = 0;
 
-        printDriehoek (grootteDriehoek, printTeller);
+        vraagDeTopPositie (top);
+
+        System.out.println ("top = " + top);
+
+        int grootteDriehoek = vraagHoogte (top);
+
+        if (top.equals ("boven") ) {
+            System.out.println ("boven");
+            printDriehoekMetTopBoven  (grootteDriehoek);
+        }
+        else if (top.equals ("onder") ) {
+            System.out.println ("onder");
+            printDriehoekMetTopOnder  (grootteDriehoek);
+            }
+        if (top.equals ("links") ) {
+            System.out.println ("links");
+            printDriehoekMetTopLinks  (grootteDriehoek);
+        }
+        else {
+            System.out.println ("rechts");
+            printDriehoekMetTopRechts (grootteDriehoek);
+        }
     }
 
-    int vraagHoogte(String message) {
+    void vraagDeTopPositie (String top) {
+        boolean juisteRichting = false;
+        top = null;
+
+        while (juisteRichting == false) {
+            System.out.println ("In while");
+            String richtingDriehoek = vraagRichting ();
+            System.out.println (richtingDriehoek);
+
+            if (richtingDriehoek.equals("boven") ) {
+                juisteRichting = true;
+                top = richtingDriehoek;
+            }
+            else if (richtingDriehoek.equals ("onder") ) {
+                juisteRichting = true;
+                top = richtingDriehoek;
+            }
+            else if (richtingDriehoek.equals ("rechts") ) {
+                juisteRichting = true;
+                top = richtingDriehoek;
+            }
+            else if (richtingDriehoek.equals ("links") ) {
+                juisteRichting = true;
+                top = richtingDriehoek;
+            }
+        }
+    }
+    String vraagRichting() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Voer de hoogte van de " + message + " driehoek via console: ");
-        int hoogte = scanner.nextInt();
-        System.out.println("De hoogte van de " + message + " driehoek is: " + hoogte);
-        return hoogte;
+        System.out.println("Geef de positie van de top via console (boven, onder, links of rechts: ");
+        String richting = scanner.next();
+        System.out.println("De top van de driehoek ligt: " + richting);
+        return richting;
     }
 
-    void printDriehoek(int grootteDriehoek, int printTeller) {
+    int vraagHoogte (String message){
+        Scanner scanner = new Scanner (System.in);
+        System.out.println ("Voer de hoogte van de driehoek met de top " + message + " via console: ");
+        int hoogte = scanner.nextInt ();
+        System.out.println ("De hoogte van de " + message + " driehoek is: " + hoogte);
+        return hoogte;
+        }
+
+    void printDriehoekMetTopBoven(int grootteDriehoek) {
+        int printTeller = 0;
+        System.out.println ("Boven printen");
+        System.out.println (grootteDriehoek);
         for (int aantalLagen = grootteDriehoek; aantalLagen >= 0 && printTeller <= grootteDriehoek; aantalLagen--, printTeller++) {
 
             printLinkerSpaties (aantalLagen);
@@ -175,13 +235,15 @@ public class MijnTest {
         }
     }
 
-    @Test
-    void maakOmgekeerdeDriehoekOpConsoleMetMethodes() {
 
-        int grootteDriehoek = vraagHoogte ("omgekeerde");
+    @Test
+    void printDriehoekMetTopOnder(int grootteDriehoek) {
+
         int aantalLagen = grootteDriehoek;
         int printTeller = grootteDriehoek;
 
+        System.out.println ("Onder printen");
+        System.out.println (grootteDriehoek);
         printOmgekeerdeDriehoek (grootteDriehoek, aantalLagen, printTeller);
     }
 
@@ -205,12 +267,13 @@ public class MijnTest {
     }
 
     @Test
-    void maakLiggendeDriehoekMetBasisLinksOpConsole() {
+    void printDriehoekMetTopLinks(int grootteDriehoek) {
 
-        int grootteDriehoek = vraagHoogte ("liggend (links)");
         int aantalLagen = grootteDriehoek;
         int printTeller = 1;
 
+        System.out.println ("links printen");
+        System.out.println (grootteDriehoek);
         printLiggendeDriehoek (grootteDriehoek, aantalLagen, printTeller);
     }
 
@@ -231,11 +294,13 @@ public class MijnTest {
     }
 
     @Test
-    void maakLiggendeDriehoekMetBasisRechtsOpConsole() {
+    void printDriehoekMetTopRechts(int grootteDriehoek) {
 
-        int grootteDriehoek = vraagHoogte ("liggend (rechts)");
         int aantalKolommen = grootteDriehoek;
         int printTeller = grootteDriehoek;
+
+        System.out.println ("Rechts printen");
+        System.out.println (grootteDriehoek);
         for (; aantalKolommen >= 0 && printTeller <= grootteDriehoek; aantalKolommen--, printTeller--) {
             for (int loopIndex = 1; loopIndex <= printTeller; loopIndex++ ) {
                 System.out.print (" ");
